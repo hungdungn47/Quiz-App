@@ -16,18 +16,23 @@ nextButton.addEventListener("click", ()=> {
 });
 selectNumberOfQuestion.addEventListener("click", chooseNumberOfQuestion);
 function chooseNumberOfQuestion(e) {
-	const num = e.target;
-	console.log(num.id);
-	if(num.id == 'ten') {
+	console.log(e.target);
+	if(e.target.id == 'ten') {
 		numberOfQuestions = 10;
-	} else if(num.id == 'twenty') {
+		document.getElementById('ten').classList.add('correct');
+		document.getElementById('twenty').classList.remove('correct');
+		document.getElementById('thirty').classList.remove('correct');
+	} else if(e.target.id == 'twenty') {
 		numberOfQuestions = 20;
-	} else if(num.id == 'thirty') {
+		document.getElementById('ten').classList.remove('correct');
+		document.getElementById('twenty').classList.add('correct');
+		document.getElementById('thirty').classList.remove('correct');
+	} else if(e.target.id == 'thirty') {
 		numberOfQuestions = 30;
+		document.getElementById('ten').classList.remove('correct');
+		document.getElementById('twenty').classList.remove('correct');
+		document.getElementById('thirty').classList.add('correct');
 	}
-	num.classList.add('correct');
-	selectNumberOfQuestion.removeEventListener("click", chooseNumberOfQuestion);
-
 }
 
 function shuffle(array) {
